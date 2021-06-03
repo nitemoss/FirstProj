@@ -11,9 +11,55 @@ public class Main {
 //        quadratic();
 //        fibo();
 //        sort();
-        threeRocks();
+//        threeRocks();
+        isDateValid();
     }
+    public static void isDateValid(){
+        Scanner scanner = new Scanner (System.in);
 
+        System.out.println("Date DD/MM/YYYY: ");
+        String date = scanner.nextLine();
+
+        String[] parts = date.split("/");
+        if(parts.length != 3){
+            parts = date.split("-");
+        }
+        int[] operableDate = new int[3];
+
+
+        for(var i = 0; i < parts.length; i++){
+            Array.set(operableDate, i, Integer.valueOf(parts[i]));
+        }
+
+
+        int day   = operableDate[0];
+        int month = operableDate[1];
+        int year  = operableDate[2];
+
+        if(month < 1 || month > 12){
+            System.out.println("Format error (month");
+            return;
+        }
+        if(day < 1 || day > 31){
+            System.out.println("Format error (day)");
+            return;
+        }
+
+        if(month == 2 && year % 4 == 0){
+            System.out.println("Format error (year & month)");
+            return;
+        }
+
+        if(month == 4 || month == 6 || month == 9 || month == 11){
+            if(day > 30){
+                System.out.println("Format error (day & month)");
+                return;
+            }
+        }
+
+        System.out.println("Valid date");
+        return;
+    }
     public static void quadratic(){
         Scanner scanner = new Scanner (System.in);
 
@@ -58,6 +104,8 @@ public class Main {
             System.out.println("sum0 = " + sum0);
         }
     }
+
+
     public static void sort(){
         // unfinished
         Random rand = new Random();
