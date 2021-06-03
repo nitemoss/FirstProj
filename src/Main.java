@@ -15,29 +15,58 @@ public class Main {
         isDateValid();
     }
     public static void isDateValid(){
+
         Scanner scanner = new Scanner (System.in);
 
-        System.out.println("Date DD/MM/YYYY: ");
+        System.out.println("Date ");
+        System.out.println("     DD/MM/YYYY ");
+        System.out.println("  or MM-DD-YYYY ");
+        System.out.println("              : ");
+
+
         String date = scanner.nextLine();
 
-        String[] parts = date.split("/");
-        if(parts.length != 3){
-            parts = date.split("-");
-        }
+
         int[] operableDate = new int[3];
 
+        String[] parts = date.split("/");
 
-        for(var i = 0; i < parts.length; i++){
-            Array.set(operableDate, i, Integer.valueOf(parts[i]));
+        int day;
+        int month;
+        int year;
+
+        try {
+            if(parts.length != 3){
+                parts = date.split("-");
+                for(var i = 0; i < parts.length; i++){
+                    Array.set(operableDate, i, Integer.valueOf(parts[i]));
+                }
+                day   = operableDate[0];
+                month = operableDate[1];
+                year  = operableDate[2];
+            } else {
+                for(var i = 0; i < parts.length; i++){
+                    Array.set(operableDate, i, Integer.valueOf(parts[i]));
+                }
+                day   = operableDate[1];
+                month = operableDate[0];
+                year  = operableDate[2];
+            }
+        } catch (Exception e){
+            System.out.println("Incorrect date entered");
+            return;
         }
 
 
-        int day   = operableDate[0];
-        int month = operableDate[1];
-        int year  = operableDate[2];
+
+
+
+
+
+
 
         if(month < 1 || month > 12){
-            System.out.println("Format error (month");
+            System.out.println("Format error (month)");
             return;
         }
         if(day < 1 || day > 31){
