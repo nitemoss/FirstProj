@@ -12,5 +12,6 @@ public class Cypher {
             char ch = (char)(((int)input.charAt(i) + offset - 97) % 26 + 97);
         }
     }
+    
 
 }

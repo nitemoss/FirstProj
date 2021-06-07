@@ -48,8 +48,8 @@ public class TicTacToe {
             System.out.println(current_player + "'s move (1-9): ");
             int move = scanner.nextInt();
 
-            if(move > 9 || move < 1){
-                System.out.println("enter a valid move (1-9");
+            if(move > 9 || move < 1 || gameBoard[move - 1] != " "){
+                System.out.println("enter a free valid move (1-9");
                 continue;
             }
             if(current_player == "X"){
@@ -61,18 +61,31 @@ public class TicTacToe {
 
             gameBoard[move - 1] = current_player;
 
+
             for(Integer[] win : wins){
-                System.out.println(movesX + " " + Arrays.toString(win));
-//                System.out.println(win[0] == movesX.get(0));
+               
+                int win_moves_total = 0;
                 for(int win_move : win){
-
-                    System.out.println(Arrays.asList(movesX).contains(win_move));
-
+                    if(movesX.contains(win_move)){
+                        win_moves_total++;
+                    }
                 }
+                if(win_moves_total == 3){
+                    System.out.println("Won X");
+                    return;
+                }
+            }
+            for(Integer[] win : wins){
 
-//                System.out.println(Arrays.asList(movesX).containsAll(Arrays.asList(win)));
-                if(Arrays.asList(movesX).containsAll(Arrays.asList(win))){
-                    System.out.println("Win X");
+                int win_moves_total = 0;
+                for(int win_move : win){
+                    if(movesX.contains(win_move)){
+                        win_moves_total++;
+                    }
+                }
+                if(win_moves_total == 3){
+                    System.out.println("Won X");
+                    return;
                 }
             }
 
