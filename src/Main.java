@@ -1,5 +1,6 @@
 import lesson2.Lesson2;
 import lesson3.Subject;
+import lesson4.TicTacToe;
 
 import java.util.Scanner;
 import java.lang.Math;
@@ -16,7 +17,9 @@ public class Main {
 
 
         // Lesson 3
-        Subject.startTest();
+//        Subject.startTest();
+
+        TicTacToe.startGame();
     }
 
 
