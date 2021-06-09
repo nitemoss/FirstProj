@@ -63,7 +63,7 @@ public class TicTacToe {
 
 
             for(Integer[] win : wins){
-               
+
                 int win_moves_total = 0;
                 for(int win_move : win){
                     if(movesX.contains(win_move)){
